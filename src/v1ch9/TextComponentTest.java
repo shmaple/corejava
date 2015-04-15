@@ -2,20 +2,21 @@ package v1ch9;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
 
 public class TextComponentTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		EventQueue.invokeLater(new Runnable(){
+			public void run()
+			{
 				TextComponentFrame frame=new TextComponentFrame();
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
-		
-
+			}
+		});
 }
 }
 class TextComponentFrame extends JFrame
@@ -23,14 +24,16 @@ class TextComponentFrame extends JFrame
 	public TextComponentFrame()
 	{
 		setTitle("TextComponentTest");
-		setSize(400,500);
+	//	setSize(400,500);
 		final JTextField textField=new JTextField();
 		final JPasswordField passwordField=new JPasswordField();
 		JPanel northPanel=new JPanel();
+		
 		northPanel.setLayout(new GridLayout(2,2));
-		northPanel.add(new JLabel("User name:"), SwingConstants.RIGHT);
+		northPanel.add(new JLabel("User name:",SwingConstants.RIGHT));
 		northPanel.add(textField);
-		northPanel.add(new JLabel("Password"),SwingConstants.RIGHT);
+		northPanel.add(new JLabel("Password",SwingConstants.RIGHT));
+		northPanel.add(passwordField);
 		add(northPanel,BorderLayout.NORTH);
 		
 		final JTextArea textArea=new JTextArea(8,40);
@@ -49,5 +52,6 @@ class TextComponentFrame extends JFrame
 			
 		});
 		add(sourthPanel,BorderLayout.SOUTH);
+		pack();
 	}
 }
